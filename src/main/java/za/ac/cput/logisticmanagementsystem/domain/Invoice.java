@@ -15,6 +15,7 @@ public class Invoice{
         this.dateIssued = builder.dateIssued;
     }
 
+
     public String getInvoiceId() {
         return invoiceId;
     }
