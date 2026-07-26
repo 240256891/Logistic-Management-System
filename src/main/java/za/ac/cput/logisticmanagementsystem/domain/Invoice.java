@@ -62,4 +62,14 @@ public class Invoice{
             return new Invoice(this);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "invoiceId='" + invoiceId + '\'' +
+                ", total=" + total +
+                ", paymentStatus='" + paymentStatus + '\'' +
+                ", dateIssued=" + dateIssued +
+                '}';
+    }
 }
