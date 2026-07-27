@@ -1,6 +1,6 @@
-/*
+/* 27/07/2026
  *Helper.java
- *Helper model class
+ *Helper model class in Util folder
  *Maghdie Petersen 230600204
  *  */
 
