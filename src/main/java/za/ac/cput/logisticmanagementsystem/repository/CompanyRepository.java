@@ -1,0 +1,4 @@
+package za.ac.cput.logisticmanagementsystem.repository;
+
+public class CompanyRepository {
+}
