@@ -111,8 +111,8 @@ public class CompanyDomain implements Serializable{
             return this;
         }
 
-        public Builder setActive(boolean active) {
-            isActive = active;
+        public Builder setIsActive(boolean isActive) {
+            this.isActive = this.isActive;
             return this;
         }
 
