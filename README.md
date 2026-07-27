@@ -13,6 +13,7 @@
 
 ## Entity Relationship Diagram (ERD)
 
+```mermaid
 erDiagram
     Company ||--|| Inventory : "owns"
     Company ||--|| ShippingContract : "holds"
