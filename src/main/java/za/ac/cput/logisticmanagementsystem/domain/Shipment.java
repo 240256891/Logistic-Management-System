@@ -16,8 +16,8 @@ public class Shipment {
     private LocalDate dispatchDate;
     private LocalDate estimatedDeliveryDate;
 
-    private ShippingContract shippingContract;
-    private Inventory inventory;
+    //private ShippingContract shippingContract;
+    //private Inventory inventory;
     private ShipmentTracking shipmentTracking;
     private Invoice invoice;
 
@@ -31,8 +31,8 @@ public class Shipment {
         this.dispatchDate = builder.dispatchDate;
         this.estimatedDeliveryDate = builder.estimatedDeliveryDate;
 
-        this.shippingContract = builder.shippingContract;
-        this.inventory = builder.inventory;
+        //this.shippingContract = builder.shippingContract;
+        //this.inventory = builder.inventory;
         this.shipmentTracking = builder.shipmentTracking;
         this.invoice = builder.invoice;
 
@@ -61,7 +61,7 @@ public class Shipment {
     public LocalDate getEstimatedDeliveryDate() {
         return estimatedDeliveryDate;
     }
-
+/*
     public ShippingContract getShippingContract() {
         return shippingContract;
     }
@@ -69,6 +69,8 @@ public class Shipment {
     public Inventory getInventory() {
         return inventory;
     }
+
+ */
 
     public ShipmentTracking getShipmentTracking() {
         return shipmentTracking;
@@ -82,7 +84,7 @@ public class Shipment {
     public String toString() {
         return "Shipment{" +
                 "shipmentId='" + shipmentId + '\'' +
-                ", weight=" + weight + "Kg" +
+                ", weight=" + weight + " Kg" +
                 ", origin='" + origin + '\'' +
                 ", destination='" + destination + '\'' +
                 ", dispatchDate=" + dispatchDate +
@@ -97,8 +99,8 @@ public class Shipment {
         private String destination;
         private LocalDate dispatchDate;
         private LocalDate estimatedDeliveryDate;
-        private ShippingContract shippingContract;
-        private Inventory inventory;
+        //private ShippingContract shippingContract;
+        //private Inventory inventory;
         private ShipmentTracking shipmentTracking;
         private Invoice invoice;
 
@@ -128,6 +130,7 @@ public class Shipment {
             return this;
         }
 
+        /*
         public Builder shippingContract(ShippingContract shippingContract) {
             this.shippingContract = shippingContract;
             return this;
@@ -137,6 +140,8 @@ public class Shipment {
             this.inventory = inventory;
             return this;
         }
+
+         */
         public Builder shipmentTracking(ShipmentTracking shipmentTracking){
             this.shipmentTracking = shipmentTracking;
             return this;
