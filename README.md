@@ -9,7 +9,7 @@
 | Maghdie Petersen | 230600204 | |
 | Simphiwe | 221549323 | |
 | Inam Ngqokomashe | 222660155 | |
-| Tebogo Pii | 230226442 | Warehouse Backend |
+| Tebogo Pii | 230226442 | Invoice |
 
 ## Entity Relationship Diagram (ERD)
 
