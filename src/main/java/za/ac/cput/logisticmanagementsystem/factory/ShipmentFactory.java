@@ -25,10 +25,10 @@ public class ShipmentFactory {
         throw new IllegalArgumentException("Weight has to be greater than zero");
         }
 
-        if(Helper.isNullOrEmpty(origin)) {
+        if(origin == null || origin.trim().isEmpty()) {
             throw new IllegalArgumentException("Origin has to be specified");
         }
-        if(Helper.isNullOrEmpty(destination)) {
+        if(destination == null || destination.trim().isEmpty()) {
             throw new IllegalArgumentException("Destination has to be specified");
         }
         if(origin.trim().equalsIgnoreCase(destination.trim())) {

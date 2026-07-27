@@ -8,18 +8,14 @@ import java.time.LocalDate;
  * 222660155
  */
 public class Shipment {
-
     private String shipmentId;
     private double weight;
     private String origin;
     private String destination;
     private LocalDate dispatchDate;
     private LocalDate estimatedDeliveryDate;
-
-    //private ShippingContract shippingContract;
-    //private Inventory inventory;
-    private ShipmentTracking shipmentTracking;
-    private Invoice invoice;
+    private ShippingContract shippingContract;
+    private Inventory inventory;
 
 
 
@@ -31,10 +27,8 @@ public class Shipment {
         this.dispatchDate = builder.dispatchDate;
         this.estimatedDeliveryDate = builder.estimatedDeliveryDate;
 
-        //this.shippingContract = builder.shippingContract;
-        //this.inventory = builder.inventory;
-        this.shipmentTracking = builder.shipmentTracking;
-        this.invoice = builder.invoice;
+        this.shippingContract = builder.shippingContract;
+        this.inventory = builder.inventory;
 
     }
 
@@ -61,23 +55,12 @@ public class Shipment {
     public LocalDate getEstimatedDeliveryDate() {
         return estimatedDeliveryDate;
     }
-/*
+
     public ShippingContract getShippingContract() {
         return shippingContract;
     }
-
     public Inventory getInventory() {
         return inventory;
-    }
-
- */
-
-    public ShipmentTracking getShipmentTracking() {
-        return shipmentTracking;
-    }
-
-    public Invoice getInvoice() {
-        return invoice;
     }
 
     @Override
@@ -99,10 +82,8 @@ public class Shipment {
         private String destination;
         private LocalDate dispatchDate;
         private LocalDate estimatedDeliveryDate;
-        //private ShippingContract shippingContract;
-        //private Inventory inventory;
-        private ShipmentTracking shipmentTracking;
-        private Invoice invoice;
+        private ShippingContract shippingContract;
+        private Inventory inventory;
 
 
         public Builder shipmentId(String shipmentId) {
@@ -130,7 +111,7 @@ public class Shipment {
             return this;
         }
 
-        /*
+
         public Builder shippingContract(ShippingContract shippingContract) {
             this.shippingContract = shippingContract;
             return this;
@@ -140,17 +121,6 @@ public class Shipment {
             this.inventory = inventory;
             return this;
         }
-
-         */
-        public Builder shipmentTracking(ShipmentTracking shipmentTracking){
-            this.shipmentTracking = shipmentTracking;
-            return this;
-        }
-        public Builder invoice(Invoice invoice){
-            this.invoice = invoice;
-            return this;
-        }
-
 
         public Shipment build() {
             return new Shipment(this);
