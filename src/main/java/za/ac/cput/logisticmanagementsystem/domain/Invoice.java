@@ -1,9 +1,17 @@
 package za.ac.cput.logisticmanagementsystem.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.Date;
 
+
+@Entity
 public class Invoice{
+
+    @Id
     public String invoiceId;
+
     public double total;
     public String paymentStatus;
     public Date dateIssued;
@@ -13,6 +21,9 @@ public class Invoice{
         this.total = builder.total;
         this.paymentStatus = builder.paymentStatus;
         this.dateIssued = builder.dateIssued;
+    }
+
+    public Invoice() {
     }
 
 
