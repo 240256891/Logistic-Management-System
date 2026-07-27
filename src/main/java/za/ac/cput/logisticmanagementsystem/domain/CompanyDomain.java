@@ -112,7 +112,7 @@ public class CompanyDomain implements Serializable{
         }
 
         public Builder setIsActive(boolean isActive) {
-            this.isActive = this.isActive;
+            this.isActive = isActive;
             return this;
         }
 
