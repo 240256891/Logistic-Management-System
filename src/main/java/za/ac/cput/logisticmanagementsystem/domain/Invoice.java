@@ -1,9 +1,23 @@
 package za.ac.cput.logisticmanagementsystem.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.Date;
 
+/**
+ * Invoice.java
+ * Domain class for Invoice entity
+ * Author: Tebogo Pii 230226442
+ * Date: 25-26 July 2026
+ */
+
+@Entity
 public class Invoice{
+
+    @Id
     public String invoiceId;
+
     public double total;
     public String paymentStatus;
     public Date dateIssued;
@@ -13,6 +27,9 @@ public class Invoice{
         this.total = builder.total;
         this.paymentStatus = builder.paymentStatus;
         this.dateIssued = builder.dateIssued;
+    }
+
+    public Invoice() {
     }
 
 
