@@ -26,7 +26,6 @@ public class Shipment {
         this.destination = builder.destination;
         this.dispatchDate = builder.dispatchDate;
         this.estimatedDeliveryDate = builder.estimatedDeliveryDate;
-
         this.shippingContract = builder.shippingContract;
         this.inventory = builder.inventory;
 
@@ -110,20 +109,16 @@ public class Shipment {
             this.estimatedDeliveryDate = estimatedDeliveryDate;
             return this;
         }
-
-
         public Builder shippingContract(ShippingContract shippingContract) {
             this.shippingContract = shippingContract;
             return this;
         }
-
         public Builder inventory(Inventory inventory){
             this.inventory = inventory;
             return this;
         }
-
         public Shipment build() {
             return new Shipment(this);
         }
     }
-}//
+}
