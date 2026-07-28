@@ -5,6 +5,12 @@ import jakarta.persistence.Id;
 
 import java.util.Date;
 
+/**
+ * Invoice.java
+ * Domain class for Invoice entity
+ * Author: Tebogo Pii 230226442
+ * Date: 25-26 July 2026
+ */
 
 @Entity
 public class Invoice{
