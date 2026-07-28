@@ -4,7 +4,7 @@ import za.ac.cput.logisticmanagementsystem.domain.ShippingContract;
 
 import java.time.LocalDate;
 
-public class ShipmentContractFactory {
+public class ShippingContractFactory {
 
     public static ShippingContract createShippingContract(String contractId, String contractNumber, Double pricePerKg, LocalDate contractStartDate, LocalDate contractExpiryDate){
         return new ShippingContract.Builder()
