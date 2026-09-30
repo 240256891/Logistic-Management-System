@@ -18,6 +18,7 @@ import za.ac.cput.logisticmanagementsystem.factory.InventoryFactory;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class InventoryRepositoryTest {
 
+
     private static final IInventoryRepository repository = InventoryRepository.getInstance();
     private static final Inventory inventory = InventoryFactory.createInventory("Monitor",
             "SKU-54321", 25, 5.0, "company-002");

@@ -23,3 +23,249 @@ body {
   text-align: center;
   padding: 2rem;
 }
+
+/* ================================
+   INVENTORY PAGE
+================================ */
+
+.inventory-container {
+  width: 100%;
+  padding: 30px;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.inventory-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #172033;
+}
+
+.inventory-header p {
+  margin-top: 6px;
+  color: #667085;
+}
+
+.inventory-refresh {
+  border: none;
+  background: #172033;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.inventory-error {
+  background: #fff0f0;
+  border: 1px solid #f3b5b5;
+  color: #b42318;
+  padding: 14px;
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+
+.inventory-form-card,
+.inventory-table-card {
+  background: white;
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.inventory-form-card h2,
+.inventory-table-card h2 {
+  margin-top: 0;
+  color: #172033;
+}
+
+.inventory-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.inventory-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.inventory-input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #344054;
+}
+
+.inventory-input-group input {
+  height: 43px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  padding: 0 12px;
+  outline: none;
+}
+
+.inventory-input-group input:focus {
+  border-color: #667085;
+}
+
+.inventory-form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.inventory-add-button {
+  border: none;
+  background: #172033;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.inventory-cancel-button {
+  border: none;
+  background: #eaecf0;
+  color: #344054;
+  padding: 11px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+/* TABLE */
+
+.inventory-table-header {
+  margin-bottom: 20px;
+}
+
+.inventory-table-header p {
+  color: #667085;
+}
+
+.inventory-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+
+.inventory-table th {
+  background: #f9fafb;
+  color: #475467;
+  text-align: left;
+  padding: 14px;
+  border-bottom: 1px solid #eaecf0;
+  font-size: 13px;
+}
+
+.inventory-table td {
+  padding: 15px 14px;
+  border-bottom: 1px solid #eaecf0;
+  color: #344054;
+  font-size: 14px;
+}
+
+.inventory-table tr:hover {
+  background: #fafbfc;
+}
+
+/* STOCK */
+
+.inventory-stock-good,
+.inventory-stock-low,
+.inventory-stock-out {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.inventory-stock-good {
+  background: #e8f7ee;
+  color: #18743c;
+}
+
+.inventory-stock-low {
+  background: #fff6df;
+  color: #9a6700;
+}
+
+.inventory-stock-out {
+  background: #fff0f0;
+  color: #b42318;
+}
+
+/* ACTIONS */
+
+.inventory-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.inventory-actions button {
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.inventory-edit-button {
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+.inventory-quantity-button {
+  background: #ecfdf3;
+  color: #027a48;
+}
+
+.inventory-delete-button {
+  background: #fff0f0;
+  color: #b42318;
+}
+
+/* STATES */
+
+.inventory-loading,
+.inventory-empty {
+  text-align: center;
+  padding: 40px;
+  color: #667085;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .inventory-container {
+    padding: 20px;
+  }
+
+  .inventory-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .inventory-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
