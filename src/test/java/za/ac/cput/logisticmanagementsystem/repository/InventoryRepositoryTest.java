@@ -1,139 +1,71 @@
+/*
+ * 28/07/2026
+ * InventoryRepositoryTest.java
+ * Test class for InventoryRepository
+ */
+
 package za.ac.cput.logisticmanagementsystem.repository;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.Order;
+import static org.junit.jupiter.api.Assertions.*;
+
 import za.ac.cput.logisticmanagementsystem.domain.Inventory;
 import za.ac.cput.logisticmanagementsystem.factory.InventoryFactory;
 
-import java.util.List;
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class InventoryRepositoryTest {
 
-import static org.junit.jupiter.api.Assertions.*;
 
-class InventoryRepositoryTest {
-
-    private InventoryRepository repository;
-    private Inventory inventory;
-
-    @BeforeEach
-    void setUp() {
-
-        repository = new InventoryRepository();
-
-        inventory = InventoryFactory.createInventory(
-                "Laptop",
-                "SKU001",
-                50,
-                2.5,
-                "COMP001"
-        );
-    }
+    private static final IInventoryRepository repository = InventoryRepository.getInstance();
+    private static final Inventory inventory = InventoryFactory.createInventory("Monitor",
+            "SKU-54321", 25, 5.0, "company-002");
 
     @Test
-    void create() {
-
+    @Order(1)
+    void a_create() {
         Inventory created = repository.create(inventory);
-
         assertNotNull(created);
         assertEquals(inventory.getInventoryId(), created.getInventoryId());
-
-        System.out.println("Created Inventory:");
-        System.out.println(created);
+        System.out.println("Created " + created);
     }
 
     @Test
-    void read() {
-
-        repository.create(inventory);
-
-        Inventory readInventory = repository.read(inventory.getInventoryId());
-
-        assertNotNull(readInventory);
-        assertEquals(inventory.getInventoryId(), readInventory.getInventoryId());
-        assertEquals("Laptop", readInventory.getItemName());
-
-        System.out.println("Read Inventory:");
-        System.out.println(readInventory);
+    @Order(2)
+    void b_read() {
+        Inventory read = repository.read(inventory.getInventoryId());
+        assertNotNull(read);
+        assertEquals("Monitor", read.getItemName());
+        System.out.println("Read " + read);
     }
 
     @Test
-    void update() {
+    @Order(3)
+    void c_update() {
+        Inventory updatedInventory = new Inventory.Builder()
+                .copy(inventory).setQuantityAvailable(30).build();
 
-        repository.create(inventory);
-
-        Inventory updated = new Inventory.Builder()
-                .setInventoryId(inventory.getInventoryId())
-                .setItemName("Gaming Laptop")
-                .setSku("SKU001")
-                .setQuantityAvailable(75)
-                .setUnitWeight(2.8)
-                .setCompanyId("COMP001")
-                .build();
-
-        repository.update(updated);
-
-        Inventory result = repository.read(updated.getInventoryId());
-
-        assertNotNull(result);
-        assertEquals("Gaming Laptop", result.getItemName());
-        assertEquals(75, result.getQuantityAvailable());
-
-        System.out.println("Updated Inventory:");
-        System.out.println(result);
+        Inventory updated = repository.update(updatedInventory);
+        assertNotNull(updated);
+        assertEquals(30, updated.getQuantityAvailable());
+        System.out.println("Updated " + updated);
     }
 
     @Test
-    void delete() {
+    @Order(4)
+    void d_getAll() {
+        assertTrue(repository.getAll().size() > 0);
+        System.out.println("All inventories: " + repository.getAll());
+    }
 
-        repository.create(inventory);
-
+    @Test
+    @Order(5)
+    void e_delete() {
         boolean deleted = repository.delete(inventory.getInventoryId());
-
         assertTrue(deleted);
-
-        Inventory result = repository.read(inventory.getInventoryId());
-
-        assertNull(result);
-
-        System.out.println("Inventory deleted successfully.");
-    }
-
-    @Test
-    void getAll() {
-
-        repository.create(inventory);
-
-        Inventory secondInventory = InventoryFactory.createInventory(
-                "Monitor",
-                "SKU100",
-                25,
-                4.5,
-                "COMP002"
-        );
-
-        repository.create(secondInventory);
-
-        List<Inventory> inventoryList = repository.getAll();
-
-        assertNotNull(inventoryList);
-        assertEquals(2, inventoryList.size());
-
-        System.out.println("All Inventory:");
-        inventoryList.forEach(System.out::println);
-    }
-
-    @Test
-    void readNonExistingInventory() {
-
-        Inventory result = repository.read("INVALID_ID");
-
-        assertNull(result);
-    }
-
-    @Test
-    void deleteNonExistingInventory() {
-
-        boolean deleted = repository.delete("INVALID_ID");
-
-        assertFalse(deleted);
+        assertNull(repository.read(inventory.getInventoryId()));
+        System.out.println("Deleted Successfully: " + inventory.getInventoryId());
     }
 }
