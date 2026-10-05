@@ -19,7 +19,7 @@ function App() {
     const renderContent = () => {
         switch (activeTab){
             case 'companies': return <Companies />
-            case 'home': return <Home />
+            case 'home': return <Home setActiveTab={setActiveTab} />
             case 'inventory': return <Inventory />
             case 'invoices': return <Invoices />
             case 'shipments': return <Shipments />
