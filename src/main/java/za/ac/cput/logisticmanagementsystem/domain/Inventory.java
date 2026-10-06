@@ -1,7 +1,14 @@
 package za.ac.cput.logisticmanagementsystem.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "inventory")
 public class Inventory {
 
+    @Id
     private String inventoryId;
     private String itemName;
     private String sku;
@@ -9,7 +16,7 @@ public class Inventory {
     private double unitWeight;
     private String companyId;
 
-    private Inventory(){}
+    public Inventory(){}
 
     public Inventory(Builder builder){
         this.inventoryId = builder.inventoryId;
@@ -42,6 +49,30 @@ public class Inventory {
 
     public String getCompanyId() {
         return companyId;
+    }
+
+    public void setInventoryId(String inventoryId) {
+        this.inventoryId = inventoryId;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
+    public void setQuantityAvailable(int quantityAvailable) {
+        this.quantityAvailable = quantityAvailable;
+    }
+
+    public void setUnitWeight(double unitWeight) {
+        this.unitWeight = unitWeight;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public static class Builder{

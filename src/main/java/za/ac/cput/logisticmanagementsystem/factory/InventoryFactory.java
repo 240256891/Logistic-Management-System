@@ -1,7 +1,7 @@
 package za.ac.cput.logisticmanagementsystem.factory;
 
 
-import za.ac.cput.logistics.domain.Inventory;
+import za.ac.cput.logisticmanagementsystem.domain.Inventory;
 
 import java.util.UUID;
 
