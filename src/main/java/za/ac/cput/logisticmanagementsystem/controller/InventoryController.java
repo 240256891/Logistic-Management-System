@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.logisticmanagementsystem.domain.Inventory;
+import za.ac.cput.logisticmanagementsystem.factory.InventoryFactory;
 import za.ac.cput.logisticmanagementsystem.service.InventoryService;
 
 import java.util.List;
@@ -22,16 +23,29 @@ public class InventoryController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Inventory> create(@RequestBody Inventory inventory) {
+    public ResponseEntity<Inventory> create(
+            @RequestBody(required = false) Inventory inventory,
+            @RequestParam(required = false) String itemName,
+            @RequestParam(required = false) String sku,
+            @RequestParam(required = false) Integer quantity,
+            @RequestParam(required = false) Double unitWeight,
+            @RequestParam(required = false) String companyId) {
+        if (inventory == null) {
+            if (itemName == null || sku == null || quantity == null
+                    || unitWeight == null || companyId == null) {
+                throw new IllegalArgumentException("Inventory details are required.");
+            }
+            inventory = InventoryFactory.createInventory(itemName, sku, quantity, unitWeight, companyId);
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(service.addStock(inventory));
     }
 
-    @GetMapping("/all")
+    @GetMapping({"/all", "/getall"})
     public List<Inventory> getAll() {
         return service.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping({"/{id}", "/read/{id}"})
     public Inventory read(@PathVariable String id) {
         return service.read(id);
     }
@@ -50,6 +64,11 @@ public class InventoryController {
     @PutMapping("/deduct/{id}/{qty}")
     public Inventory deduct(@PathVariable String id, @PathVariable int qty) {
         return service.deductStock(id, qty);
+    }
+
+    @PatchMapping("/update-quantity/{id}")
+    public Inventory updateQuantity(@PathVariable String id, @RequestParam int quantity) {
+        return service.updateQuantity(id, quantity);
     }
 
     @GetMapping("/available/{id}/{qty}")

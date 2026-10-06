@@ -1,3 +1,9 @@
+/*
+ * 28/07/2026
+ * Inventory.java
+ * Inventory domain model class
+ */
+
 package za.ac.cput.logisticmanagementsystem.domain;
 
 import jakarta.persistence.Entity;
@@ -114,8 +120,30 @@ public class Inventory {
             return this;
         }
 
+        public Builder copy(Inventory inventory) {
+            this.inventoryId = inventory.inventoryId;
+            this.itemName = inventory.itemName;
+            this.sku = inventory.sku;
+            this.quantityAvailable = inventory.quantityAvailable;
+            this.unitWeight = inventory.unitWeight;
+            this.companyId = inventory.companyId;
+            return this;
+        }
+
         public Inventory build(){
             return new Inventory(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "inventoryId='" + inventoryId + '\'' +
+                ", itemName='" + itemName + '\'' +
+                ", sku='" + sku + '\'' +
+                ", quantityAvailable=" + quantityAvailable +
+                ", unitWeight=" + unitWeight +
+                ", companyId='" + companyId + '\'' +
+                '}';
     }
 }

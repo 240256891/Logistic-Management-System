@@ -10,6 +10,8 @@ public interface InventoryService {
 
     Inventory update(Inventory inventory);
 
+    Inventory updateQuantity(String inventoryId, int quantity);
+
     boolean delete(String inventoryId);
 
     Inventory deductStock(String inventoryId, int quantity);

@@ -25,13 +25,13 @@ class InventoryServiceTest {
     @BeforeEach
     void setUp() {
         service = new InventoryServiceImpl(repository);
-        when(repository.save(any(Inventory.class)))
-                .thenAnswer(invocation -> invocation.getArgument(0));
     }
 
     @Test
     void createsAnInventoryItemAndGeneratesItsId() {
         when(repository.existsById(anyString())).thenReturn(false);
+        when(repository.save(any(Inventory.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
 
         Inventory created = service.addStock(inventory(null, 20));
 
@@ -44,6 +44,8 @@ class InventoryServiceTest {
     void deductsStockAndPersistsTheUpdatedQuantity() {
         Inventory item = inventory("inventory-1", 10);
         when(repository.findById("inventory-1")).thenReturn(Optional.of(item));
+        when(repository.save(any(Inventory.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
 
         Inventory updated = service.deductStock("inventory-1", 3);
 

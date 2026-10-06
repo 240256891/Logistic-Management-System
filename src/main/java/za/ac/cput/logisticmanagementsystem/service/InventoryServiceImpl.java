@@ -42,6 +42,16 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
+    public Inventory updateQuantity(String inventoryId, int quantity) {
+        if (quantity < 0) {
+            throw new IllegalArgumentException("Available quantity cannot be negative.");
+        }
+        Inventory inventory = read(inventoryId);
+        inventory.setQuantityAvailable(quantity);
+        return repository.save(inventory);
+    }
+
+    @Override
     public boolean delete(String inventoryId) {
         Inventory inventory = read(inventoryId);
         repository.delete(inventory);
